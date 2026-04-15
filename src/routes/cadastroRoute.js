@@ -5,8 +5,6 @@ const cadastroRouter = express.Router();
 cadastroRouter.get("/", (req, res) => {
     res.send("Cadastro");
 });
-cadastroRouter.post("/", (req, res) => {
-    res.send("Cadastro");
-});
+cadastroRouter.post("/", );
 
 export default cadastroRouter;
