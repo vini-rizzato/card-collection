@@ -1,0 +1,15 @@
+import UserModel from "../../model/user";
+
+async function encontraEmail(req, res, next) {
+
+    const { email } = req.body;
+    const findUser = await UserModel.findOne({email: email});
+
+    if(!findUser) {
+        return res.json({ "message": "Email não encontrado." })
+    };
+
+    next();
+};
+
+export default encontraEmail;
