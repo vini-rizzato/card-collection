@@ -20,7 +20,8 @@ async function cadastraUser(req, res, next) {
         const user = await UserModel.insertOne({
             name: name,
             email: email,
-            password: senhaCript
+            password: senhaCript,
+            role: "User"
         });
 
         console.log("Usuario adicionado: " + user);

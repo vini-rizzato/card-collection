@@ -4,10 +4,14 @@ const UserSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-    collections: {
+    role: String,
+    collections: [{
         nameCollection: String,
-        idCards: []
-    }
+        idCards: [{
+            set: String,
+            cn: String
+        }]
+    }]
 });
 
 const UserModel = mongoose.model("User", UserSchema);

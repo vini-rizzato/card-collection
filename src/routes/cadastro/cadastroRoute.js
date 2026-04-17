@@ -5,9 +5,6 @@ import cadastraUser from "../../controllers/cadastraUser";
 
 const cadastroRouter = express.Router();
 
-cadastroRouter.get("/", (req, res) => {
-    res.send("Cadastro");
-});
 cadastroRouter.post("/", verificaDadosCadastro, verificaExisteEmail, cadastraUser);
 
 export default cadastroRouter;

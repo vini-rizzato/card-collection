@@ -10,7 +10,7 @@ async function verifyPassword(req, res, next) {
     const hashedPassword = bcrypt.hash(10, password);
 
 
-    if(userPassword != hashedPassword) {
+    if(!bcrypt.compare(userPassword === hashedPassword)) {
         return res.json({ "message": "Senha inválida." })
     };
 
