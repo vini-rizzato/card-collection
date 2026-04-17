@@ -1,4 +1,4 @@
-import UserModel from "../../model/user";
+import UserModel from "../../model/user.js";
 import bcrypt from "bcrypt";
 
 async function verifyPassword(req, res, next) {

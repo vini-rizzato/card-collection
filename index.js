@@ -1,5 +1,5 @@
 import express from "express";
-import cadastroRouter from "./src/routes/cadastroRoute.js";
+import cadastroRouter from "./src/routes/cadastro/cadastroRoute.js"
 import connectDB from "./src/config/connectionDB.js";
 
 const app = express();

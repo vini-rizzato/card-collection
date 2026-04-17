@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import UserModel from "../model/user";
+import UserModel from "../model/user.js";
 import { configDotenv } from "dotenv";
 
 

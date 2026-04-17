@@ -1,4 +1,4 @@
-import UserModel from "../../model/user";
+import UserModel from "../../model/user.js";
 
 async function verificaExisteEmail(req, res, next) {
 
@@ -13,4 +13,4 @@ async function verificaExisteEmail(req, res, next) {
     next();
 };
 
-export default verificaExisteEmail();
+export default verificaExisteEmail;

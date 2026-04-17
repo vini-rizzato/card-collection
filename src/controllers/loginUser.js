@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../model/user";
+import UserModel from "../model/user.js";
 import { configDotenv } from "dotenv";
 
 async function loginUser(req, res, next) {

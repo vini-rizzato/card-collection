@@ -3,7 +3,6 @@ import { configDotenv } from "dotenv";
 
 configDotenv();
 
-
 async function connectDB() {
     try{
         await mongoose.connect(process.env.CONNECTION_DB_URL);
