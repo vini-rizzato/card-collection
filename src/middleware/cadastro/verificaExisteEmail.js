@@ -7,7 +7,7 @@ async function verificaExisteEmail(req, res, next) {
     const findUserEmail = await UserModel.findOne({ email: email }).exec();
     
     if(findUserEmail) {
-        return res.json({"message": "Email já cadastrado."});
+        return res.status(409).json({"message": "Email já cadastrado."});
     };
 
     next();

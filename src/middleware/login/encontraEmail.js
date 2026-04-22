@@ -6,7 +6,7 @@ async function encontraEmail(req, res, next) {
     const findUser = await UserModel.findOne({email: email});
 
     if(!findUser) {
-        return res.json({ "message": "Email não encontrado." })
+        return res.status(404).json({ "message": "Email não encontrado." })
     };
 
     next();

@@ -1,13 +1,16 @@
-async function buscaCollections(codg) {
-    const url = "https://api.scryfall.com/sets";
+async function buscaCollections(nome) {
 
-    try{
-        const response = await fetch(url + `/id?= ${codg}`);
+    const res = await fetch(`https://api.scryfall.com/cards/named?exact=${encodeURIComponent(nome)}`);
+    const data = await res.json();
 
-        return response;
-    }catch(err) {
-        console.error({ "message": "Erro " + err });
-    };
+    const image = data.image_uris
+    ? data.image_uris.normal
+    : data.card_faces[0].image_uris.normal;
+
+    console.log({
+        name: data.name,
+        image
+    });
 }
 
 export default buscaCollections;

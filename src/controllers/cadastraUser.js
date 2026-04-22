@@ -3,17 +3,14 @@ import bcrypt from "bcrypt";
 import UserModel from "../model/user.js";
 import { configDotenv } from "dotenv";
 
+configDotenv();
 
 async function cadastraUser(req, res, next) {
-
-    configDotenv();
 
     try{
         const {name, email, password} = req.body;
 
-        const senhaCript = bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(password, salt);
-        });
+        const senhaCript = await bcrypt.hash(password, 10);
 
         console.log(senhaCript);
 
@@ -26,13 +23,13 @@ async function cadastraUser(req, res, next) {
 
         console.log("Usuario adicionado: " + user);
 
-        const logaUser = jwt.sign({ foo: 'bar' }, process.env.JWT_KEY, { algorithm: 'RS256' })
+        const logaUser = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_KEY)
 
-        res.json({"token": logaUser});
+        res.status(201).json({ token: logaUser });
     }catch(err){
-        res.send({"message": "Erro 500"})
+        console.log("Erro: " + err);
+        res.status(500).json({ message: "Erro 500" })
     }
-
-
 }
+
 export default cadastraUser;

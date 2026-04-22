@@ -2,7 +2,7 @@ function verificaDadosCadastro(req, res, next){
     const {name, email, password} = req.body;
 
     if(!name || !email || !password) {
-        return res.json({"message": "Dados incompletos"});
+        return res.status(400).json({"message": "Dados incompletos"});
     }
 
     next();
