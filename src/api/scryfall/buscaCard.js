@@ -1,4 +1,4 @@
-async function buscaCollections(nome) {
+async function buscaCard(nome) {
 
     const res = await fetch(`https://api.scryfall.com/cards/named?exact=${encodeURIComponent(nome)}`);
     const data = await res.json();
@@ -13,4 +13,4 @@ async function buscaCollections(nome) {
     });
 }
 
-export default buscaCollections;
+export default buscaCard;
