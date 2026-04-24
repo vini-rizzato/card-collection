@@ -1,7 +1,8 @@
-async function buscaCard(nome) {
+async function buscarCard(nome) {
 
     const res = await fetch(`https://api.scryfall.com/cards/named?exact=${encodeURIComponent(nome)}`);
-    const data = await res.json();
+
+    const cartaData  = await res.json();
 
     const image = data.image_uris
     ? data.image_uris.normal
@@ -11,6 +12,8 @@ async function buscaCard(nome) {
         name: data.name,
         image
     });
+
+    return cartaData;
 }
 
-export default buscaCard;
+export default buscarCard;

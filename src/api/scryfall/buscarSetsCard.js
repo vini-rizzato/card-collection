@@ -1,19 +1,22 @@
-async function buscarSets(nome) {
-    let url = `https://api.scryfall.com/cards/search?q=${encodeURIComponent(`!"${nome}"`)}`;
-    let todas = [];
+async function buscarSets(cartaData) {
 
-    while (url) {
-        const res = await fetch(url);
-        const data = await res.json();
+    const oracleId = cartaData.oracle_id;
 
-        todas = todas.concat(data.data);
-        url = data.has_more ? data.next_page : null;
+    let dadosSet = await fetch(`https://api.scryfall.com/cards/search?q=oracleid:${oracleId}&unique=prints`);
+    let sets = [];
+
+    while(dadosSet) {
+        let res = await fetch(dadosSet);
+        let dados = await res.json();
+
+        todas = todas.concat(dados.dados);
+        dadosSet = dados.has_more ? dados.next_page : null;
     }
 
-    const setsUnicas = Array.from(
+    const setsUnicos = Array.from(
         new Map(
-            todas.map(card => [
-                card.set, 
+            sets.map(card => [
+                card.set,
                 {
                     set: card.set,
                     set_name: card.set_name,
@@ -23,11 +26,11 @@ async function buscarSets(nome) {
         ).values()
     );
 
-    setsUnicas.sort((a, b) => new Date(b.released_at) - new Date(a.released_at));
+    setsUnicos.sort(
+        (a,b) => new Date(b.released_at) - new Date(a.released_at)
+    );
 
-    console.log(setsUnicas);
-
-    return setsUnicas;
+    return setsUnicos;
 }
 
 export default buscarSets;
