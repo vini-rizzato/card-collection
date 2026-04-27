@@ -1,6 +1,6 @@
 import UserModel from "../../model/user.js";
 
-async function adicionarCartaUser(req, res) {
+async function addCardUser(req, res) {
     try {
         const { collectionId } = req.body;
 
@@ -20,4 +20,4 @@ async function adicionarCartaUser(req, res) {
     }
 };
 
-export default adicionarCartaUser;
+export default addCardUser;

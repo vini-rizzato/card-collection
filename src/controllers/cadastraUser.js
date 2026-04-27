@@ -14,7 +14,7 @@ async function cadastraUser(req, res, next) {
 
         console.log(senhaCript);
 
-        const user = await UserModel.insertOne({
+        const user = await UserModel.create({
             name: name,
             email: email,
             password: senhaCript,

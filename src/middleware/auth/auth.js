@@ -13,9 +13,9 @@ async function auth(req, res, next) {
     const token = authHeader.split(" ")[1];
 
     try {
-        const decoded = jwt.decode(token, process.env.JWT_KEY);
+        const verified = jwt.verify(token, process.env.JWT_KEY);
 
-        req.user = decoded;
+        req.user = verified;
         next();
     }catch(err) {
         console.error(err);
