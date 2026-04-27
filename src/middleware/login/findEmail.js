@@ -1,6 +1,6 @@
 import UserModel from "../../model/user.js";
 
-async function encontraEmail(req, res, next) {
+async function findEmail(req, res, next) {
 
     const { email } = req.body;
     const findUser = await UserModel.findOne({email: email});
@@ -12,4 +12,4 @@ async function encontraEmail(req, res, next) {
     next();
 };
 
-export default encontraEmail;
+export default findEmail;

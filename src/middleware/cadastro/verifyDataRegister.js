@@ -1,4 +1,4 @@
-function verificaDadosCadastro(req, res, next){
+function verifyDataRegister(req, res, next){
     const {name, email, password} = req.body;
 
     if(!name || !email || !password) {
@@ -8,4 +8,4 @@ function verificaDadosCadastro(req, res, next){
     next();
 };
 
-export default verificaDadosCadastro;
+export default verifyDataRegister;

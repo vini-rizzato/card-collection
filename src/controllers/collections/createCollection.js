@@ -2,21 +2,19 @@ import UserModel from "../model/user.js";
 
 async function createCollection(req, res) {
     try {
-        const { email } = req.headers;
+        const { email } = req.user.email;
         const { nameCollection } = req.body;
 
-        if (!email) {
-            return res.status(400).json({ message: "Email é obrigatório." });
-        }
-
         if (!nameCollection) {
-            return res.status(400).json({ message: "nameCollection é obrigatório." });
+            return res.status(400).json({ message: "Nome da coleção é obrigatório." });
         }
 
         await UserModel.updateOne(
             { email: email },
             { $push: { collections: { nameCollection: nameCollection, cards: [] } } }
         );
+
+        return res.status(200).json({ message: "Coleção criada com sucesso!" });
 
     }catch(err) {
         console.error(err);

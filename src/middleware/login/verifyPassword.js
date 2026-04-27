@@ -7,7 +7,6 @@ async function verifyPassword(req, res, next) {
     const findUser = await UserModel.findOne({email: email});
 
     const userPassword = findUser.password;
-    const hashedPassword = await bcrypt.hash(password, 10);
 
     const senhaValida = await bcrypt.compare(password, userPassword);
 

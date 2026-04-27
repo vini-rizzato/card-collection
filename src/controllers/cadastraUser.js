@@ -5,7 +5,7 @@ import { configDotenv } from "dotenv";
 
 configDotenv();
 
-async function cadastraUser(req, res, next) {
+async function cadastraUser(req, res) {
 
     try{
         const {name, email, password} = req.body;

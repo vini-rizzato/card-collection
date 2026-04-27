@@ -1,4 +1,4 @@
-function verificaDadosLogin(req, res, next){
+function verifyData(req, res, next){
     const { email, password} = req.body;
 
     if(!email || !password) {
@@ -8,4 +8,4 @@ function verificaDadosLogin(req, res, next){
     next();
 };
 
-export default verificaDadosLogin;
+export default verifyData;

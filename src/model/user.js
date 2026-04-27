@@ -6,11 +6,13 @@ const UserSchema = new mongoose.Schema({
     password: String,
     role: String,
     collections: [{
+        idCollection: String,
         nameCollection: String,
         cards: [{
             name: String,
             set: String,
-            image: String
+            image: String,
+            qtd: Number
         }]
     }]
 });

@@ -1,10 +1,10 @@
 import express from "express";
-import verificaDadosCadastro from "../../middleware/cadastro/verificaDados.js";
-import verificaExisteEmail from "../../middleware/cadastro/verificaExisteEmail.js"
+import verifyDataRegister from "../../middleware/cadastro/verifyDataRegister.js";
+import verifyEmail from "../../middleware/cadastro/verifyEmail.js";
 import cadastraUser from "../../controllers/cadastraUser.js";
 
 const cadastroRouter = express.Router();
 
-cadastroRouter.post("/", verificaDadosCadastro, verificaExisteEmail, cadastraUser);
+cadastroRouter.post("/", verifyDataRegister, verifyEmail, cadastraUser);
 
 export default cadastroRouter;

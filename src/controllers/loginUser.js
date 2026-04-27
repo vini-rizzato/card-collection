@@ -13,6 +13,7 @@ async function loginUser(req, res) {
         const payloadUser = {
             id: findUser.id,
             name: findUser.name,
+            email: findUser.email,
             role: findUser.role
         };
 

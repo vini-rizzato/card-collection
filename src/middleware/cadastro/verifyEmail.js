@@ -1,6 +1,6 @@
 import UserModel from "../../model/user.js";
 
-async function verificaExisteEmail(req, res, next) {
+async function verifyEmail(req, res, next) {
 
     const { email } = req.body;
 
@@ -13,4 +13,4 @@ async function verificaExisteEmail(req, res, next) {
     next();
 };
 
-export default verificaExisteEmail;
+export default verifyEmail;

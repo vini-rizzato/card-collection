@@ -1,4 +1,4 @@
-async function existeCard(req, res, next) {
+async function existsCard(req, res, next) {
     const nome = req.params.nome; 
 
     try {
@@ -29,4 +29,4 @@ async function existeCard(req, res, next) {
     }
 }
 
-export default existeCard;
+export default existsCard;
