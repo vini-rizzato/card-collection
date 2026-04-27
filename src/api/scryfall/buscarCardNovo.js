@@ -1,15 +1,17 @@
 async function buscarCard(nome) {
 
     const res = await fetch(`https://api.scryfall.com/cards/named?exact=${encodeURIComponent(nome)}`);
+    
+    if(!res.ok) throw new Error("Erro ao buscar carta: " + res.statusText); 
 
     const cartaData  = await res.json();
 
-    const image = data.image_uris
-    ? data.image_uris.normal
-    : data.card_faces[0].image_uris.normal;
+    const image = cartaData.image_uris
+        ? cartaData.image_uris.normal
+        : cartaData.card_faces[0].image_uris.normal;
 
     console.log({
-        name: data.name,
+        name: cartaData.name,
         image
     });
 

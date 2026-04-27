@@ -7,9 +7,10 @@ const UserSchema = new mongoose.Schema({
     role: String,
     collections: [{
         nameCollection: String,
-        idCards: [{
+        cards: [{
+            name: String,
             set: String,
-            cn: String
+            image: String
         }]
     }]
 });

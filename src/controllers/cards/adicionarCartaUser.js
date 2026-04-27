@@ -1,25 +1,22 @@
 import UserModel from "../../model/user.js";
 
-function adicionarCartaUser(req, res) {
+async function adicionarCartaUser(req, res) {
     try {
-        const { name, image, oracle_id } = req.body;
+        const { collectionId } = req.body;
 
-        const novaCarta = {
-            name,
-            image,
-            oracle_id
-        };
+        if (!collectionId) {
+            return res.status(400).json({ message: "collectionId é obrigatório." });
+        }
 
-
-        UserModel.updateOne(
-            { email: req.user.email },
-            { $push: { cards: novaCarta } }
+        await UserModel.updateOne(
+            { email: req.user.email, "collections._id": collectionId },
+            { $push: { "collections.$.cards": req.card } }
         );
 
         return res.status(201).json({ message: "Carta adicionada com sucesso!" });
     } catch (err) {
         console.error(err);
-        return res.status(500).json({ message: "Erro ao adicionar carta " + err });
+        return res.status(500).json({ message: "Erro ao adicionar carta: " + err });
     }
 };
 
