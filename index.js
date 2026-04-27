@@ -4,6 +4,7 @@ import loginRouter from "./src/routes/login/loginRoute.js"
 import connectDB from "./src/config/connectionDB.js";
 import buscaCard from "./src/api/scryfall/buscarCardNovo.js";
 import buscarSets from "./src/api/scryfall/buscarSetsCard.js";
+import adicionarCardRouter from "./src/routes/cards/adicionarCard.js";
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use("/cadastro", cadastroRouter);
 app.use("/login", loginRouter);
-app.use("/card/add/");
+app.use("/card/add", adicionarCardRouter);
 
 buscaCard("Black Lotus");
 buscarSets("Black Lotus");

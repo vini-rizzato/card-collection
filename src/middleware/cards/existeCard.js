@@ -11,8 +11,15 @@ async function existeCard(req, res, next) {
         }
 
         const dadosCard = await response.json();
+        const dadosFiltrados = {
+            name: dadosCard.name,
+            image: dadosCard.image_uris
+                ? dadosCard.image_uris.normal
+                : dadosCard.card_faces[0].image_uris.normal,
+            oracle_id: dadosCard.oracle_id
+        };
 
-        req.card = dadosCard;
+        req.card = dadosFiltrados;
 
         return next();
 
