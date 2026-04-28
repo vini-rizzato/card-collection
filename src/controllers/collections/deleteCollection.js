@@ -2,7 +2,7 @@ import UserModel from "../../model/user.js";
 
 async function deleteCollection(req, res) {
     try {
-        const { email } = req.user.email;
+        const email = req.user.email;
 
         const { collectionId } = req.body;
 

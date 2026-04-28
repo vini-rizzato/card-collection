@@ -1,13 +1,9 @@
-import UserModel from "../model/user.js";
+import UserModel from "../../model/user.js";
 
 async function createCollection(req, res) {
     try {
-        const { email } = req.user.email;
+        const email = req.user.email;
         const { nameCollection } = req.body;
-
-        if (!nameCollection) {
-            return res.status(400).json({ message: "Nome da coleção é obrigatório." });
-        }
 
         await UserModel.updateOne(
             { email: email },
