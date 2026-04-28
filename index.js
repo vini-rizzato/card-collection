@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/cadastro", cadastroRouter);
 app.use("/collection", collectionsRouter);
 app.use("/login", loginRouter);
-app.use("/card/add", adicionarCardRouter);
+app.use("/collection/card/add", adicionarCardRouter);
 
 
 app.listen(8080, () => {

@@ -7,7 +7,9 @@ async function verifyCollectionName(req, res, next) {
 
         const existsCollection = await UserModel.findOne({
             email,
-            "collections.nameCollection": nameCollection
+            "collections.nameCollection": {
+                $regex: new RegExp(`^${nameCollection.trim()}$`, "i")
+            }
         });
 
         if (existsCollection) {

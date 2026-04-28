@@ -1,9 +1,9 @@
 async function existsCard(req, res, next) {
-    const nome = req.params.nome; 
+    const name = req.params.name; 
 
     try {
         const response = await fetch(
-            `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(nome)}`
+            `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}`
         );
 
         if (!response.ok) {
@@ -16,7 +16,7 @@ async function existsCard(req, res, next) {
             image: dadosCard.image_uris
                 ? dadosCard.image_uris.normal
                 : dadosCard.card_faces[0].image_uris.normal,
-            oracle_id: dadosCard.oracle_id
+            set: dadosCard.set 
         };
 
         req.card = dadosFiltrados;

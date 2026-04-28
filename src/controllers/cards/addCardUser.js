@@ -4,10 +4,6 @@ async function addCardUser(req, res) {
     try {
         const { collectionId } = req.body;
 
-        if (!collectionId) {
-            return res.status(400).json({ message: "collectionId é obrigatório." });
-        }
-
         await UserModel.updateOne(
             { email: req.user.email, "collections._id": collectionId },
             { $push: { "collections.$.cards": req.card } }

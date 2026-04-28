@@ -8,10 +8,12 @@ async function getCollections(req, res) {
             { email },
             { collections: 1, _id: 0 }
         )
-        
+
         if (!user) {
             return res.status(404).json({ message: "Usuário não encontrado." });
         }
+
+        if (user.collections.length <= 0) return res.status(200).json({ message: "O usuário não possui coleções criadas." });
 
         return res.status(200).json(user.collections);
 
