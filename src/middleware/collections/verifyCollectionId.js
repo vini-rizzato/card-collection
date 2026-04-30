@@ -13,9 +13,12 @@ async function verifyCollectionId(req, res, next) {
         "collections._id": collectionId
     });
 
+
     if (!existsCollection) {
         return res.status(404).json({ message: "Coleção não encontrada." });
     }
+
+    req.collectionId = collectionId;
 
     next();
 }
