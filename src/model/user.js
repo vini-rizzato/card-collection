@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
         nameCollection: String,
         cards: [{
             name: String,
+            setName: String,
             set: String,
             image: String,
             qtd: Number
