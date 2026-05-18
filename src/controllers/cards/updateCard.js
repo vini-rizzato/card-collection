@@ -5,10 +5,15 @@ async function updateCard(req, res) {
         const email = req.user.email;
         const collectionId = req.collectionId;
         const { cardId } = req.card;
-        const { set } = req.body;
+        const { set, qtd } = req.body;
 
         if (!set) {
             return res.status(400).json({ message: "Novo set é obrigatório." });
+        }
+
+        const setFields = { "collections.$[col].cards.$[card].set": set };
+        if (qtd !== undefined) {
+            setFields["collections.$[col].cards.$[card].qtd"] = Math.max(1, Number(qtd));
         }
 
         const result = await UserModel.updateOne(
@@ -17,11 +22,7 @@ async function updateCard(req, res) {
                 "collections._id": collectionId,
                 "collections.cards._id": cardId
             },
-            {
-                $set: {
-                    "collections.$[col].cards.$[card].set": set
-                }
-            },
+            { $set: setFields },
             {
                 arrayFilters: [
                     { "col._id": collectionId },

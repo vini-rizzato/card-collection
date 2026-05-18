@@ -3,7 +3,7 @@ async function existsCard(req, res, next) {
 
     try {
         const response = await fetch(
-            `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}`
+            `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`
         );
 
         if (!response.ok) {

@@ -1,6 +1,6 @@
 async function existsCardBySet(req, res, next) {
     const { name } = req.params;
-    const { set, set_name } = req.body;
+    const { set, qtd } = req.body;
 
     if (!set) {
         return res.status(400).json({ message: "set é obrigatório." });
@@ -23,7 +23,8 @@ async function existsCardBySet(req, res, next) {
             set: dadosCard.set,
             image: dadosCard.image_uris
                 ? dadosCard.image_uris.normal
-                : dadosCard.card_faces[0].image_uris.normal
+                : dadosCard.card_faces[0].image_uris.normal,
+            qtd: qtd ? Math.max(1, Number(qtd)) : 1
         };
 
         return next();
