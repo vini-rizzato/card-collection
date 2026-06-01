@@ -56,3 +56,7 @@ Colecionadores de cartas, entusiastas de TCG (Trading Card Games) e usuários qu
 | POST | `/collection/card/add/:name` | Adiciona uma carta ao inventário de uma coleção do usuário | Sim |
 | PUT | `/collection/card` | Atualiza informações de uma carta (ex: quantidade) | Sim |
 | DELETE | `/collection/card` | Remove uma carta específica do inventário do usuário | Sim |
+
+## Deploy
+
+Link: (card-collection-psi.vercel.app)
