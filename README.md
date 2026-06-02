@@ -6,6 +6,7 @@ Uma API RESTful desenvolvida para gerenciar coleções de cartas, permitindo o r
 
 - André Augusto Rodrigues Martins (Documentação Técnica)
 - Vini Rizzato (Desenvolvimento Back-end)
+- Cristiano Almeida (Desenvolvimento Back-end)
 - Edson Luiz (Desenvolvimento Front-end)
 
 ## O Problema que Resolve
